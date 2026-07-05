@@ -19,6 +19,7 @@ Route::post('/login', [AuthController::class, 'login']);
 
 // Guest bisa melakukan deteksi (opsional, tergantung kebijakan Anda)
 Route::post('/detect-cry-guest', [HistoryController::class, 'storeGuest']);
+Route::post('/detect-cry', [HistoryController::class, 'store']); // Untuk simpan hasil deteksi
 
 
 /*
@@ -50,7 +51,6 @@ Route::middleware('auth:sanctum')->group(function () {
     // 4. Riwayat Tangisan (History)
     // Sesuaikan penamaan dengan Flutter: /cry-records
     Route::get('/cry-records', [HistoryController::class, 'index']);
-    Route::post('/detect-cry', [HistoryController::class, 'store']); // Untuk simpan hasil deteksi
     Route::delete('/cry-records/{id}', [HistoryController::class, 'destroy']);
 
     // 5. Statistik Dashboard
